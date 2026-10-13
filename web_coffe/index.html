@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopi Nusantara - Premium Coffee & Roastery</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Plus Jakarta Sans & Playfair Display) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        espresso: '#2C1A1D',
+                        mocha: '#4A2E2B',
+                        latte: '#FDF6EE',
+                        gold: '#D4A373',
+                        goldhover: '#B88655',
+                        cream: '#F4ECE1'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-header {
+            background: rgba(84, 70, 72, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-latte text-espresso font-sans antialiased flex flex-col min-h-screen selection:bg-gold selection:text-white">
+
+    <!-- NAVBAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header text-latte transition-all duration-300 border-b border-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center border border-gold/40 group-hover:bg-gold transition-colors duration-300">
+                    <i class="fa-solid fa-mug-hot text-gold group-hover:text-espresso text-xl transition-colors"></i>
+                </div>
+                <span class="font-serif text-2xl font-bold tracking-wide text-latte">Kopi<span class="text-gold">Nusantara</span></span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#hero" class="hover:text-gold transition-colors">Beranda</a>
+                <a href="#promo" class="hover:text-gold transition-colors flex items-center gap-1">
+                    Promo <span class="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold animate-pulse">HOT</span>
+                </a>
+                <a href="#menu" class="hover:text-gold transition-colors">Menu Kopi</a>
+                <a href="#about" class="hover:text-gold transition-colors">Kisah Kami</a>
+                <a href="#location" class="hover:text-gold transition-colors">Lokasi & Reservasi</a>
+            </nav>
+
+            <!-- Cart & Actions -->
+            <div class="flex items-center gap-4">
+                <button onclick="toggleCart()" class="relative p-2.5 rounded-full bg-mocha/60 hover:bg-gold/20 border border-gold/30 transition-all text-latte" aria-label="Keranjang Belanja">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-gold text-espresso text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md">0</span>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 text-latte hover:text-gold">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-espresso border-b border-gold/20 px-4 pt-2 pb-6 space-y-3">
+            <a href="#hero" onclick="toggleMobileMenu()" class="block py-2 text-latte hover:text-gold font-medium">Beranda</a>
+            <a href="#promo" onclick="toggleMobileMenu()" class="block py-2 text-gold font-medium">Promo Spesial 🔥</a>
+            <a href="#menu" onclick="toggleMobileMenu()" class="block py-2 text-latte hover:text-gold font-medium">Menu Kopi</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-latte hover:text-gold font-medium">Kisah Kami</a>
+            <a href="#location" onclick="toggleMobileMenu()" class="block py-2 text-latte hover:text-gold font-medium">Lokasi & Reservasi</a>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20">
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative min-h-[90vh] bg-espresso flex items-center overflow-hidden">
+            <!-- Background Image Overlay -->
+            <div class="absolute inset-0 z-0 opacity-30">
+                <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1920&q=80" alt="Coffee Shop Background" class="w-full h-full object-cover">
+            </div>
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 z-0 bg-gradient-to-r from-espresso via-espresso/90 to-transparent"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs sm:text-sm font-semibold">
+                        <i class="fa-solid fa-award"></i> Biji Kopi Lokal Premium 100% Arabika & Robusta
+                    </div>
+                    <h1 class="font-serif text-4xl sm:text-6xl font-bold text-latte leading-tight">
+                        Cita Rasa Kopi Asli <br><span class="text-gold italic">Nusantara</span> di Setiap Tegukan
+                    </h1>
+                    <p class="text-latte/80 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light">
+                        Dipetik dari perkebunan terbaik Indonesia dan di-roast secara presisi oleh barista berpengalaman untuk menghadirkan aroma serta kehangatan sempurna.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                        <a href="#menu" class="px-8 py-4 rounded-xl bg-gold text-espresso font-bold hover:bg-goldhover transition-all shadow-lg shadow-gold/20 text-center">
+                            Pesan Sekarang <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#promo" class="px-8 py-4 rounded-xl border border-gold/40 text-latte font-semibold hover:bg-gold/10 transition-all text-center">
+                            Lihat Promo Hari Ini
+                        </a>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-gold/20 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <p class="font-serif text-2xl sm:text-3xl font-bold text-gold">15+</p>
+                            <p class="text-xs text-latte/70">Varian Kopi</p>
+                        </div>
+                        <div>
+                            <p class="font-serif text-2xl sm:text-3xl font-bold text-gold">4.9★</p>
+                            <p class="text-xs text-latte/70">1,200+ Review</p>
+                        </div>
+                        <div>
+                            <p class="font-serif text-2xl sm:text-3xl font-bold text-gold">30 Mnt</p>
+                            <p class="text-xs text-latte/70">Pengiriman Cepat</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Card / Image -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-gold to-mocha rounded-3xl blur opacity-30"></div>
+                        <div class="relative bg-mocha/40 backdrop-blur-md p-6 rounded-3xl border border-gold/30 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=800&q=80" alt="Specialty Coffee" class="w-full h-72 object-cover rounded-2xl shadow-md mb-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <span class="text-xs font-bold bg-gold/20 text-gold px-2.5 py-1 rounded-md">BESTSELLER</span>
+                                    <h3 class="font-serif text-2xl font-bold text-latte mt-1">Es Kopi Gula Aren</h3>
+                                </div>
+                                <span class="font-serif text-2xl font-bold text-gold">Rp 22.000</span>
+                            </div>
+                            <p class="text-sm text-latte/70 mb-4">Espresso ganda dengan susu segar alami dan pemanis gula aren organik.</p>
+                            <button onclick="addToCart('m1')" class="w-full py-3 bg-gold hover:bg-goldhover text-espresso font-bold rounded-xl transition-colors flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> Tambah Langsung
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROMO SECTION -->
+        <section id="promo" class="py-16 bg-cream relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-gradient-to-r from-espresso to-mocha rounded-3xl p-8 sm:p-12 shadow-2xl text-latte relative overflow-hidden">
+                    <!-- Background Accent Decorative -->
+                    <div class="absolute -right-10 -bottom-10 w-64 h-64 rounded-full bg-gold/10 blur-3xl"></div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                        <div class="lg:col-span-8 space-y-4">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-red-500/20 text-red-400 border border-red-500/30 rounded-full text-xs font-bold uppercase tracking-wider">
+                                <i class="fa-solid fa-clock"></i> Promo Terbatas
+                            </div>
+                            <h2 class="font-serif text-3xl sm:text-4xl font-bold">Buy 1 Get 1 Free - Happy Hour Promo!</h2>
+                            <p class="text-latte/80 text-base max-w-xl">
+                                Beli varian Espresso Based pilihan apa saja dan dapatkan Gratis 1 Es Kopi Susu Aren. Berlaku untuk pemesanan *Online* & *Takeaway*.
+                            </p>
+                            
+                            <!-- Countdown Timer -->
+                            <div class="flex items-center gap-4 pt-2">
+                                <span class="text-sm font-medium text-latte/70">Berakhir dalam:</span>
+                                <div class="flex gap-2 text-center">
+                                    <div class="bg-espresso/80 border border-gold/30 rounded-lg px-3 py-1.5">
+                                        <span id="timer-hours" class="font-mono text-xl font-bold text-gold">04</span>
+                                        <span class="block text-[10px] text-latte/60">Jam</span>
+                                    </div>
+                                    <div class="bg-espresso/80 border border-gold/30 rounded-lg px-3 py-1.5">
+                                        <span id="timer-minutes" class="font-mono text-xl font-bold text-gold">25</span>
+                                        <span class="block text-[10px] text-latte/60">Menit</span>
+                                    </div>
+                                    <div class="bg-espresso/80 border border-gold/30 rounded-lg px-3 py-1.5">
+                                        <span id="timer-seconds" class="font-mono text-xl font-bold text-gold">40</span>
+                                        <span class="block text-[10px] text-latte/60">Detik</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-4 flex flex-col items-center justify-center bg-espresso/50 p-6 rounded-2xl border border-gold/20 text-center">
+                            <span class="text-sm text-latte/70 uppercase tracking-widest mb-1">Gunakan Kode Voucher</span>
+                            <div class="text-2xl font-mono font-bold text-gold border-2 border-dashed border-gold px-6 py-2 rounded-xl mb-4 bg-espresso">
+                                HAPPYKOPI
+                            </div>
+                            <button onclick="claimVoucher('HAPPYKOPI')" class="w-full py-3 rounded-xl bg-gold text-espresso font-bold hover:bg-goldhover transition-all">
+                                Klaim Diskon 20%
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MENU SECTION -->
+        <section id="menu" class="py-20 bg-latte">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-gold font-bold uppercase tracking-widest text-xs">Pilihan Terbaik</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-espresso mt-2">Daftar Menu & Penjualan</h2>
+                    <p class="text-gray-600 mt-4 text-sm sm:text-base">Temukan racikan kopi favoritmu, diseduh segar setiap hari langsung untuk kamu.</p>
+                </div>
+
+                <!-- Search and Filters -->
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-10">
+                    <!-- Categories Tabs -->
+                    <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 hide-scrollbar" id="category-filters">
+                        <!-- Rendered by JS -->
+                    </div>
+
+                    <!-- Search Box -->
+                    <div class="relative w-full md:w-72">
+                        <input type="text" id="search-input" oninput="renderProducts()" placeholder="Cari menu kopi..." 
+                            class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gold/30 bg-white focus:outline-none focus:border-gold text-sm shadow-sm">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-400"></i>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Dynamic Product Cards Injected Here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT / STORY SECTION -->
+        <section id="about" class="py-20 bg-espresso text-latte relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="relative">
+                        <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-gold/20">
+                            <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=80" alt="Coffee Bean Roasting" class="w-full h-[450px] object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-mocha p-6 rounded-2xl border border-gold/30 shadow-xl hidden sm:block">
+                            <p class="font-serif text-3xl font-bold text-gold">100%</p>
+                            <p class="text-xs text-latte/80">Petani Kopi Lokal Indonesia</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <span class="text-gold font-bold uppercase tracking-widest text-xs">Kisah Kami</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight">Menghubungkan Cita Rasa dari Kebun ke Cangkir Anda</h2>
+                        <p class="text-latte/80 text-sm sm:text-base leading-relaxed">
+                            Kopi Nusantara lahir dari kecintaan kami terhadap keanekaragaman biji kopi lokal. Kami bekerja sama secara langsung dengan para petani kopi lokal di Gayo, Toraja, Kintamani, dan Ciwidey untuk memastikan setiap biji dipetik saat matang sempurna.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-fire-burner text-gold text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-latte">Roasting Segar</h4>
+                                    <p class="text-xs text-latte/70 mt-1">Di-roasting secara berkala tiap minggu untuk menjaga kesegaran rasa.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-leaf text-gold text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-latte">Bahan Alami</h4>
+                                    <p class="text-xs text-latte/70 mt-1">Tanpa pemanis buatan dan pengawet tambahan.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS SECTION -->
+        <section class="py-20 bg-cream">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-gold font-bold uppercase tracking-widest text-xs">Kata Mereka</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-espresso mt-2">Testimoni Pelanggan Setia</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Review Card 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gold/20 flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-gold text-sm gap-1 mb-4">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-gray-600 text-sm italic mb-6">"Es Kopi Gula Aren-nya beneran nagih! Rasa ekspresonya kuat tapi balance sama gula arennya. Pengiriman via WA juga sangat cepat."</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gold/30 flex items-center justify-center font-bold text-espresso">
+                                AD
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-espresso">Demisya</h4>
+                                <p class="text-xs text-gray-500">Penikmat Kopi Harian</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gold/20 flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-gold text-sm gap-1 mb-4">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-gray-600 text-sm italic mb-6">"Suasana cafe sangat nyaman untuk kerja remote. Varian V60 Manual Brew dari biji Aceh Gayo aromanya luar biasa nikmat!"</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gold/30 flex items-center justify-center font-bold text-espresso">
+                                SN
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-espresso">Yudi Pratama</h4>
+                                <p class="text-xs text-gray-500">Freelance Designer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gold/20 flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-gold text-sm gap-1 mb-4">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-gray-600 text-sm italic mb-6">"Croissant-nya renyah banget dan pas dipadukan sama Caramel Macchiato. Tempat langganan tiap nongkrong akhir pekan."</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gold/30 flex items-center justify-center font-bold text-espresso">
+                                BW
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-espresso">Yelsa</h4>
+                                <p class="text-xs text-gray-500">Pelanggan Cafe</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOCATION & RESERVATION SECTION -->
+        <section id="location" class="py-20 bg-latte">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Location Info -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div>
+                            <span class="text-gold font-bold uppercase tracking-widest text-xs">Kunjungi Cafe</span>
+                            <h2 class="font-serif text-3xl font-bold text-espresso mt-1">Lokasi & Jam Operasional</h2>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4 p-4 rounded-xl bg-white border border-gold/20 shadow-sm">
+                                <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold shrink-0">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-espresso text-sm">Alamat Utama</h4>
+                                    <p class="text-xs text-gray-600 mt-0.5">Jl. Kemiri 15A, IringMulyo, Metro Timur</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-4 rounded-xl bg-white border border-gold/20 shadow-sm">
+                                <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold shrink-0">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-espresso text-sm">Jam Buka Cafe</h4>
+                                    <p class="text-xs text-gray-600 mt-0.5">Senin - Jumat: 07.00 - 22.00 WIB</p>
+                                    <p class="text-xs text-gray-600">Sabtu - Minggu: 08.00 - 23.00 WIB</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-4 rounded-xl bg-white border border-gold/20 shadow-sm">
+                                <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold shrink-0">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-espresso text-sm">Kontak & Reservasi</h4>
+                                    <p class="text-xs text-gray-600 mt-0.5">+62 895-0784-3444 (WhatsApp)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Google Maps Embed Placeholder Button -->
+                        <a href="https://maps.google.com" target="_blank" class="inline-flex items-center gap-2 text-sm font-bold text-gold hover:text-goldhover">
+                            <i class="fa-solid fa-map-location-dot"></i> Buka via Google Maps <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- Reservation Form -->
+                    <div class="lg:col-span-7 bg-white p-8 rounded-3xl border border-gold/20 shadow-xl">
+                        <h3 class="font-serif text-2xl font-bold text-espresso mb-2">Reservasi Meja</h3>
+                        <p class="text-xs text-gray-500 mb-6">Pastikan tempat dudukmu tersedia untuk meeting, kerja, atau bersantai.</p>
+
+                        <form id="reservation-form" onsubmit="handleReservation(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-espresso mb-1">Nama Lengkap</label>
+                                    <input type="text" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gold">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-espresso mb-1">Nomor WhatsApp</label>
+                                    <input type="tel" required placeholder="0812xxxxxxx" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gold">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-espresso mb-1">Tanggal</label>
+                                    <input type="date" required class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gold text-gray-600">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-espresso mb-1">Jam Kedatangan</label>
+                                    <input type="time" required class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gold text-gray-600">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-espresso mb-1">Jumlah Tamu</label>
+                                    <select class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gold text-gray-600">
+                                        <option>1 - 2 Orang</option>
+                                        <option>3 - 5 Orang</option>
+                                        <option>6+ Orang (Group)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-espresso mb-1">Catatan Khusus (Opsional)</label>
+                                <textarea rows="2" placeholder="Contoh: Area Non-Smoking, butuh colokan listrik..." class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gold"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 bg-gold hover:bg-goldhover text-espresso font-bold rounded-xl transition-all shadow-md">
+                                Kirim Reservasi via WhatsApp
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- CART DRAWER / SLIDE-OVER -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div onclick="toggleCart()" class="fixed inset-0 bg-espresso/60 backdrop-blur-sm transition-opacity"></div>
+
+        <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between">
+                
+                <!-- Cart Header -->
+                <div class="p-6 bg-espresso text-latte flex items-center justify-between border-b border-gold/20">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-gold"></i>
+                        <h2 class="font-serif text-lg font-bold">Keranjang Belanja</h2>
+                    </div>
+                    <button onclick="toggleCart()" class="text-latte/70 hover:text-latte p-2">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items List -->
+                <div id="cart-items" class="flex-grow p-6 overflow-y-auto divide-y divide-gray-100">
+                    <!-- Dynamic Cart Items Rendered Here -->
+                </div>
+
+                <!-- Cart Summary & Checkout Action -->
+                <div class="p-6 bg-latte border-t border-gold/20 space-y-4">
+                    <!-- Voucher Input -->
+                    <div class="flex gap-2">
+                        <input type="text" id="voucher-code" placeholder="Kode Voucher (Contoh: HAPPYKOPI)" class="flex-grow px-3 py-2 text-xs rounded-lg border border-gray-300 uppercase focus:outline-none focus:border-gold">
+                        <button onclick="applyVoucher()" class="px-4 py-2 bg-espresso text-gold text-xs font-bold rounded-lg hover:bg-mocha">Gunakan</button>
+                    </div>
+                    <p id="voucher-msg" class="text-[11px] font-semibold hidden"></p>
+
+                    <div class="space-y-1.5 text-xs text-gray-600">
+                        <div class="flex justify-between">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal" class="font-semibold text-espresso">Rp 0</span>
+                        </div>
+                        <div class="flex justify-between text-green-600">
+                            <span>Diskon Voucher</span>
+                            <span id="cart-discount">- Rp 0</span>
+                        </div>
+                        <div class="flex justify-between text-base font-bold text-espresso pt-2 border-t border-gray-200">
+                            <span>Total Tagihan</span>
+                            <span id="cart-total" class="text-gold">Rp 0</span>
+                        </div>
+                    </div>
+
+                    <button onclick="openCheckoutModal()" class="w-full py-3 bg-gold hover:bg-goldhover text-espresso font-bold rounded-xl shadow-md transition-all">
+                        Lanjut ke Checkout
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div onclick="closeCheckoutModal()" class="fixed inset-0 bg-espresso/70 backdrop-blur-sm transition-opacity"></div>
+
+            <div class="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="p-6 bg-espresso text-latte flex justify-between items-center border-b border-gold/20">
+                    <h3 class="font-serif text-lg font-bold">Formulir Pemesanan</h3>
+                    <button onclick="closeCheckoutModal()" class="text-latte/70 hover:text-latte">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <form id="checkout-form" onsubmit="processCheckout(event)" class="p-6 space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-espresso mb-1">Nama Penerima</label>
+                        <input type="text" id="cust-name" required placeholder="Masukkan nama Anda" class="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg border border-gray-300 focus:outline-none focus:border-gold">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-espresso mb-1">Nomor WhatsApp</label>
+                        <input type="tel" id="cust-phone" required placeholder="08xxxxxxxxxx" class="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg border border-gray-300 focus:outline-none focus:border-gold">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-espresso mb-1">Alamat Pengiriman / Detail Meja</label>
+                        <textarea id="cust-address" rows="2" required placeholder="Alamat lengkap pengiriman atau Nomor Meja (jika Dine-In)" class="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg border border-gray-300 focus:outline-none focus:border-gold"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-espresso mb-1">Metode Pembayaran</label>
+                        <select id="cust-payment" class="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg border border-gray-300 focus:outline-none focus:border-gold text-gray-700">
+                            <option value="QRIS Instant">QRIS (GoPay, OVO, ShopeePay, Dana)</option>
+                            <option value="Transfer Bank">Transfer Bank (BCA / Mandiri)</option>
+                            <option value="Cash / COD">Bayar di Tempat / Cash</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-4 border-t border-gray-100 flex justify-between items-center">
+                        <div>
+                            <p class="text-[10px] text-gray-500">Total Pembayaran</p>
+                            <p id="checkout-modal-total" class="font-serif text-lg font-bold text-gold">Rp 0</p>
+                        </div>
+                        <button type="submit" class="px-6 py-2.5 bg-gold hover:bg-goldhover text-espresso font-bold rounded-xl text-xs sm:text-sm shadow-md transition-colors flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Kirim Order via WA
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-espresso text-latte border-t border-gold/20 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Brand Info -->
+                <div class="space-y-4">
+                    <a href="#" class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center border border-gold/40">
+                            <i class="fa-solid fa-mug-hot text-gold text-sm"></i>
+                        </div>
+                        <span class="font-serif text-xl font-bold tracking-wide text-latte">Kopi<span class="text-gold">Nusantara</span></span>
+                    </a>
+                    <p class="text-xs text-latte/70 leading-relaxed">
+                        Kedai kopi lokal premium dengan dedikasi tinggi menyajikan kualitas cita rasa kopi terbaik dari Sabang sampai Merauke.
+                    </p>
+                    <div class="flex gap-3 pt-2">
+                        <a href="#" class="w-8 h-8 rounded-full bg-mocha hover:bg-gold hover:text-espresso flex items-center justify-center transition-colors text-xs text-gold"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-mocha hover:bg-gold hover:text-espresso flex items-center justify-center transition-colors text-xs text-gold"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-mocha hover:bg-gold hover:text-espresso flex items-center justify-center transition-colors text-xs text-gold"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="font-serif text-sm font-bold text-gold uppercase tracking-wider mb-4">Navigasi</h4>
+                    <ul class="space-y-2 text-xs text-latte/80">
+                        <li><a href="#hero" class="hover:text-gold transition-colors">Beranda</a></li>
+                        <li><a href="#promo" class="hover:text-gold transition-colors">Promo Spesial</a></li>
+                        <li><a href="#menu" class="hover:text-gold transition-colors">Menu Penjualan</a></li>
+                        <li><a href="#about" class="hover:text-gold transition-colors">Tentang Kami</a></li>
+                        <li><a href="#location" class="hover:text-gold transition-colors">Reservasi Meja</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-serif text-sm font-bold text-gold uppercase tracking-wider mb-4">Kontak Layanan</h4>
+                    <ul class="space-y-2 text-xs text-latte/80">
+                        <li><i class="fa-solid fa-envelope mr-2 text-gold"></i> halo@kopinusantara.id</li>
+                        <li><i class="fa-solid fa-phone mr-2 text-gold"></i> +62 882-6909-7849</li>
+                        <li><i class="fa-solid fa-location-dot mr-2 text-gold"></i> IringMulyo, Metro Timur</li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="font-serif text-sm font-bold text-gold uppercase tracking-wider mb-4">Newsletter Promo</h4>
+                    <p class="text-xs text-latte/70 mb-3">Dapatkan voucher diskon khusus & kabar promo terbaru via email.</p>
+                    <form onsubmit="subscribeNewsletter(event)" class="space-y-2">
+                        <input type="email" required placeholder="Email Anda..." class="w-full px-3 py-2 bg-mocha border border-gold/30 rounded-lg text-xs text-latte placeholder-latte/50 focus:outline-none focus:border-gold">
+                        <button type="submit" class="w-full py-2 bg-gold hover:bg-goldhover text-espresso font-bold text-xs rounded-lg transition-colors">
+                            Berlangganan
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gold/10 pt-6 text-center text-[11px] text-latte/50">
+                &copy; 2026 Kopi Nusantara Shop. All rights reserved. Crafted with passion.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // MENU / PRODUCT DATA
+        const products = [
+            {
+                id: 'm1',
+                name: 'Es Kopi Gula Aren',
+                category: 'espresso',
+                price: 22000,
+                originalPrice: 25000,
+                rating: 4.9,
+                badge: 'BEST SELLER',
+                image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80',
+                desc: 'Espresso ganda + susu segar alami + gula aren murni.'
+            },
+            {
+                id: 'm2',
+                name: 'Caramel Macchiato',
+                category: 'espresso',
+                price: 28000,
+                originalPrice: null,
+                rating: 4.8,
+                badge: null,
+                image: 'https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=600&q=80',
+                desc: 'Espresso creamy dengan sirup karamel dan foam lembut.'
+            },
+            {
+                id: 'm3',
+                name: 'Manual Brew V60 Gayo',
+                category: 'manual',
+                price: 26000,
+                originalPrice: null,
+                rating: 4.9,
+                badge: 'RECOMMENDED',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
+                desc: 'Biji Arabika Aceh Gayo dengan wangi floral dan acidity seimbang.'
+            },
+            {
+                id: 'm4',
+                name: 'Cold Brew Signature',
+                category: 'coldbrew',
+                price: 25000,
+                originalPrice: 30000,
+                rating: 4.7,
+                badge: 'PROMO 15%',
+                image: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80',
+                desc: 'Diseduh dingin selama 16 jam untuk rasa yang halus dan kaya.'
+            },
+            {
+                id: 'm5',
+                name: 'Matcha Latte Creamy',
+                category: 'noncoffee',
+                price: 27000,
+                originalPrice: null,
+                rating: 4.8,
+                badge: null,
+                image: 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=600&q=80',
+                desc: 'Bubuk Matcha Uji Jepang asli dipadu dengan susu segar.'
+            },
+            {
+                id: 'm6',
+                name: 'Butter Croissant',
+                category: 'pastry',
+                price: 20000,
+                originalPrice: null,
+                rating: 4.9,
+                badge: 'FRESH BAKE',
+                image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80',
+                desc: 'Pastry renyah dengan aroma mentega Perancis yang gurih.'
+            },
+            {
+                id: 'm7',
+                name: 'Americano Ice/Hot',
+                category: 'espresso',
+                price: 18000,
+                originalPrice: null,
+                rating: 4.6,
+                badge: null,
+                image: 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80',
+                desc: 'Espresso shot murni dicampur dengan air segar.'
+            },
+            {
+                id: 'm8',
+                name: 'Chocolate Lava Toast',
+                category: 'pastry',
+                price: 24000,
+                originalPrice: null,
+                rating: 4.8,
+                badge: null,
+                image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80',
+                desc: 'Roti panggang dengan isian cokelat leleh di dalamnya.'
+            }
+        ];
+
+        // CATEGORIES
+        const categories = [
+            { id: 'all', label: 'Semua Menu' },
+            { id: 'espresso', label: 'Espresso Based' },
+            { id: 'manual', label: 'Manual Brew' },
+            { id: 'coldbrew', label: 'Cold Brew' },
+            { id: 'noncoffee', label: 'Non-Coffee' },
+            { id: 'pastry', label: 'Pastry & Snack' }
+        ];
+
+        // STATE VARIABLES
+        let currentCategory = 'all';
+        let cart = [];
+        let appliedVoucher = null;
+
+        // INITIALIZATION
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCategories();
+            renderProducts();
+            startCountdown();
+        });
+
+        // RENDER CATEGORY FILTERS
+        function renderCategories() {
+            const container = document.getElementById('category-filters');
+            container.innerHTML = categories.map(cat => `
+                <button onclick="setCategory('${cat.id}')" class="px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                    currentCategory === cat.id 
+                    ? 'bg-gold text-espresso shadow-md' 
+                    : 'bg-white text-espresso border border-gold/20 hover:bg-gold/10'
+                }">
+                    ${cat.label}
+                </button>
+            `).join('');
+        }
+
+        // SET CATEGORY
+        function setCategory(catId) {
+            currentCategory = catId;
+            renderCategories();
+            renderProducts();
+        }
+
+        // RENDER PRODUCT CARDS
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            const searchKeyword = document.getElementById('search-input').value.toLowerCase();
+
+            const filtered = products.filter(p => {
+                const matchCategory = currentCategory === 'all' || p.category === currentCategory;
+                const matchSearch = p.name.toLowerCase().includes(searchKeyword) || p.desc.toLowerCase().includes(searchKeyword);
+                return matchCategory && matchSearch;
+            });
+
+            if(filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-gray-500">
+                        <i class="fa-solid fa-mug-saucer text-4xl mb-3 text-gold/40"></i>
+                        <p class="text-sm font-medium">Menu yang dicari tidak ditemukan.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(p => `
+                <div class="bg-white rounded-2xl border border-gold/20 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+                    <div>
+                        <!-- Image Container -->
+                        <div class="relative h-48 overflow-hidden bg-cream">
+                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            ${p.badge ? `<span class="absolute top-3 left-3 bg-gold text-espresso text-[10px] font-bold px-2.5 py-1 rounded-md shadow">${p.badge}</span>` : ''}
+                            <span class="absolute top-3 right-3 bg-espresso/80 text-latte text-[11px] font-medium px-2 py-0.5 rounded-md backdrop-blur-sm flex items-center gap-1">
+                                <i class="fa-solid fa-star text-gold text-[10px]"></i> ${p.rating}
+                            </span>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-5">
+                            <h3 class="font-serif text-lg font-bold text-espresso group-hover:text-gold transition-colors">${p.name}</h3>
+                            <p class="text-xs text-gray-500 mt-1 line-clamp-2">${p.desc}</p>
+                            
+                            <div class="flex items-baseline gap-2 mt-4">
+                                <span class="font-serif text-lg font-bold text-espresso">Rp ${p.price.toLocaleString('id-ID')}</span>
+                                ${p.originalPrice ? `<span class="text-xs text-gray-400 line-through">Rp ${p.originalPrice.toLocaleString('id-ID')}</span>` : ''}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="px-5 pb-5 pt-2 grid grid-cols-2 gap-2">
+                        <button onclick="addToCart('${p.id}')" class="py-2.5 rounded-xl border border-gold text-espresso hover:bg-gold/10 font-semibold text-xs transition-colors flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-cart-plus"></i> + Keranjang
+                        </button>
+                        <button onclick="buyNow('${p.id}')" class="py-2.5 rounded-xl bg-gold hover:bg-goldhover text-espresso font-bold text-xs transition-colors flex items-center justify-center">
+                            Beli Langsung
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // CART LOGIC
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+
+            if(existing) {
+                existing.qty++;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+
+            updateCartUI();
+            showToast(`"${product.name}" ditambahkan ke keranjang.`);
+        }
+
+        function buyNow(productId) {
+            addToCart(productId);
+            toggleCart();
+        }
+
+        function updateQty(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if(!item) return;
+
+            item.qty += delta;
+            if(item.qty <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            // Cart Badge Count
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cart-badge').innerText = totalItems;
+
+            // Cart Items Render
+            const container = document.getElementById('cart-items');
+            if(cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-16 text-gray-400">
+                        <i class="fa-solid fa-basket-shopping text-4xl mb-2 text-gold/30"></i>
+                        <p class="text-xs">Keranjang Anda masih kosong.</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = cart.map(item => `
+                    <div class="py-4 flex items-center justify-between gap-3">
+                        <img src="${item.image}" class="w-14 h-14 rounded-xl object-cover shrink-0">
+                        <div class="flex-grow">
+                            <h4 class="font-serif text-xs font-bold text-espresso">${item.name}</h4>
+                            <p class="text-xs text-gold font-bold mt-0.5">Rp ${(item.price * item.qty).toLocaleString('id-ID')}</p>
+                        </div>
+                        <div class="flex items-center border border-gray-200 rounded-lg overflow-hidden">
+                            <button onclick="updateQty('${item.id}', -1)" class="px-2 py-1 bg-gray-50 text-xs font-bold text-gray-600 hover:bg-gray-200">-</button>
+                            <span class="px-2.5 text-xs font-bold">${item.qty}</span>
+                            <button onclick="updateQty('${item.id}', 1)" class="px-2 py-1 bg-gray-50 text-xs font-bold text-gray-600 hover:bg-gray-200">+</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Calculations
+            const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+            let discount = 0;
+            if(appliedVoucher === 'HAPPYKOPI') {
+                discount = subtotal * 0.2; // 20% Discount
+            }
+
+            const total = Math.max(0, subtotal - discount);
+
+            document.getElementById('cart-subtotal').innerText = `Rp ${subtotal.toLocaleString('id-ID')}`;
+            document.getElementById('cart-discount').innerText = `- Rp ${discount.toLocaleString('id-ID')}`;
+            document.getElementById('cart-total').innerText = `Rp ${total.toLocaleString('id-ID')}`;
+            document.getElementById('checkout-modal-total').innerText = `Rp ${total.toLocaleString('id-ID')}`;
+        }
+
+        // VOUCHER LOGIC
+        function applyVoucher() {
+            const input = document.getElementById('voucher-code').value.trim().toUpperCase();
+            const msg = document.getElementById('voucher-msg');
+
+            if(input === 'HAPPYKOPI') {
+                appliedVoucher = 'HAPPYKOPI';
+                msg.innerText = '✓ Voucher Diskon 20% Berhasil Diterapkan!';
+                msg.className = 'text-[11px] font-semibold text-green-600';
+            } else {
+                appliedVoucher = null;
+                msg.innerText = '✕ Kode voucher tidak valid.';
+                msg.className = 'text-[11px] font-semibold text-red-500';
+            }
+            msg.classList.remove('hidden');
+            updateCartUI();
+        }
+
+        function claimVoucher(code) {
+            document.getElementById('voucher-code').value = code;
+            toggleCart();
+            applyVoucher();
+        }
+
+        // UI TOGGLES
+        function toggleCart() {
+            document.getElementById('cart-drawer').classList.toggle('hidden');
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function openCheckoutModal() {
+            if(cart.length === 0) {
+                alert('Keranjang Anda masih kosong. Silakan pilih menu terlebih dahulu!');
+                return;
+            }
+            toggleCart();
+            document.getElementById('checkout-modal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        // PROCESS CHECKOUT TO WHATSAPP
+        function processCheckout(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('cust-name').value;
+            const phone = document.getElementById('cust-phone').value;
+            const address = document.getElementById('cust-address').value;
+            const payment = document.getElementById('cust-payment').value;
+
+            const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+            let discount = appliedVoucher === 'HAPPYKOPI' ? subtotal * 0.2 : 0;
+            const total = subtotal - discount;
+
+            let orderText = `*HALO KOPI NUSANTARA, SAYA INGIN PESAN:*%0A%0A`;
+            orderText += `*Data Pemesan:*%0A`;
+            orderText += `• Nama: ${name}%0A`;
+            orderText += `• No HP: ${phone}%0A`;
+            orderText += `• Alamat/Meja: ${address}%0A`;
+            orderText += `• Pembayaran: ${payment}%0A%0A`;
+
+            orderText += `*Rincian Pesanan:*%0A`;
+            cart.forEach(item => {
+                orderText += `• ${item.name} x${item.qty} = Rp ${(item.price * item.qty).toLocaleString('id-ID')}%0A`;
+            });
+
+            if(discount > 0) {
+                orderText += `%0A*Diskon Voucher:* -Rp ${discount.toLocaleString('id-ID')}`;
+            }
+            orderText += `%0A*TOTAL BAYAR: Rp ${total.toLocaleString('id-ID')}*%0A%0A`;
+            orderText += `Mohon segera diproses pesanan saya. Terima kasih!`;
+
+            const adminWhatsApp = '089507843444';
+            const waUrl = `https://wa.me/${adminWhatsApp}?text=${orderText}`;
+
+            window.open(waUrl, '_blank');
+            closeCheckoutModal();
+            cart = [];
+            appliedVoucher = null;
+            updateCartUI();
+        }
+
+        // HANDLE RESERVATION VIA WHATSAPP
+        function handleReservation(e) {
+            e.preventDefault();
+            const inputs = e.target.querySelectorAll('input, select, textarea');
+            const name = inputs[0].value;
+            const phone = inputs[1].value;
+            const date = inputs[2].value;
+            const time = inputs[3].value;
+            const guests = inputs[4].value;
+            const notes = inputs[5].value;
+
+            let resText = `*HALO KOPI NUSANTARA, SAYA INGIN RESERVASI MEJA:*%0A%0A`;
+            resText += `• Nama: ${name}%0A`;
+            resText += `• No HP: ${phone}%0A`;
+            resText += `• Tanggal: ${date}%0A`;
+            resText += `• Jam: ${time}%0A`;
+            resText += `• Jumlah Tamu: ${guests}%0A`;
+            if(notes) resText += `• Catatan: ${notes}%0A`;
+
+            const adminWhatsApp = '6281234567890';
+            window.open(`https://wa.me/${adminWhatsApp}?text=${resText}`, '_blank');
+        }
+
+        // SUBSCRIBE NEWSLETTER
+        function subscribeNewsletter(e) {
+            e.preventDefault();
+            showToast('Terima kasih! Voucher berlangganan telah dikirim ke email Anda.');
+            e.target.reset();
+        }
+
+        // COUNTDOWN TIMER LOGIC
+        function startCountdown() {
+            let hours = 4, minutes = 25, seconds = 40;
+            setInterval(() => {
+                if (seconds > 0) {
+                    seconds--;
+                } else {
+                    seconds = 59;
+                    if (minutes > 0) {
+                        minutes--;
+                    } else {
+                        minutes = 59;
+                        if (hours > 0) hours--;
+                    }
+                }
+                document.getElementById('timer-hours').innerText = hours.toString().padStart(2, '0');
+                document.getElementById('timer-minutes').innerText = minutes.toString().padStart(2, '0');
+                document.getElementById('timer-seconds').innerText = seconds.toString().padStart(2, '0');
+            }, 1000);
+        }
+
+        // TOAST NOTIFICATION UTILITY
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-5 right-5 bg-espresso text-gold border border-gold/40 px-5 py-3 rounded-xl shadow-2xl text-xs font-semibold z-50 flex items-center gap-2 transform transition-all duration-300 translate-y-10 opacity-0';
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-base"></i> ${message}`;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
