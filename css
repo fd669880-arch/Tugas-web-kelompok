@@ -1,0 +1,51 @@
+/* ==========================================================================
+   1. IMPORT FONTS & TAILWIND BASE
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   2. CUSTOM SCROLLBAR
+   ========================================================================== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F9EFEA;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #A66E53;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6E3C27;
+}
+
+/* ==========================================================================
+   3. CUSTOM UTILITIES & ANIMATIONS
+   ========================================================================== */
+/* Smooth transition untuk efek hover card menu */
+.menu-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Efek Glassmorphism (opsional untuk navbar/card) */
+.glass-effect {
+    background: rgba(44, 24, 14, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Kustomisasi gaya pemotongan teks deskripsi menu */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
